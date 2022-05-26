@@ -1,0 +1,29 @@
+query posts {
+  posts {
+    id
+    activity {
+      commentsCount
+      likesCount
+    }
+    author {
+      name
+      profileImage {
+        hash
+        url
+      }
+      username
+    }
+    content
+    media
+    user {
+      name
+      profileImage {
+        hash
+        url
+      }
+      username
+    }
+    createdAt
+    updatedAt
+  }
+}

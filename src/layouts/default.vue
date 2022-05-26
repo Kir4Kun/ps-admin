@@ -1,9 +1,24 @@
+<script setup lang="ts">
+import { Authenticator } from '@aws-amplify/ui-vue'
+import '@aws-amplify/ui-vue/styles.css'
+</script>
+
 <template>
-  <main class="px-4 py-10 text-center text-gray-700 dark:text-gray-200">
-    <RouterView />
-    <Footer />
-    <div class="mt-5 mx-auto text-center opacity-75 dark:opacity-50 text-sm">
-      [Default Layout]
-    </div>
-  </main>
+  <authenticator :hide-sign-up="true">
+    <template #header>
+      <div style="padding: var(--amplify-space-large); text-align: center">
+        <img
+          class="amplify-image"
+          alt="Amplify logo"
+          src="https://i.ibb.co/QHTWRQn/ps-logo-full.png"
+        >
+      </div>
+    </template>
+    <template #default="{ signOut }">
+      <Header @sign-out="{ signOut }" />
+      <main class="mx-auto container text-center text-gray-700 dark:text-gray-200">
+        <RouterView />
+      </main>
+    </template>
+  </authenticator>
 </template>

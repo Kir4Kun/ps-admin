@@ -6,10 +6,15 @@ import '@vue/runtime-core'
 declare module '@vue/runtime-core' {
   export interface GlobalComponents {
     Counter: typeof import('./components/Counter.vue')['default']
-    Footer: typeof import('./components/Footer.vue')['default']
-    README: typeof import('./components/README.md')['default']
+    Header: typeof import('./components/Header.vue')['default']
+    PostsList: typeof import('./components/PostsList.vue')['default']
     RouterLink: typeof import('vue-router')['RouterLink']
     RouterView: typeof import('vue-router')['RouterView']
+    Table: typeof import('./components/Table.vue')['default']
+    TableHeadItem: typeof import('./components/TableHeadItem.vue')['default']
+    TableItem: typeof import('./components/TableItem.vue')['default']
+    TableRow: typeof import('./components/TableRow.vue')['default']
+    UsersList: typeof import('./components/UsersList.vue')['default']
   }
 }
 

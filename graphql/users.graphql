@@ -1,0 +1,20 @@
+query users {
+  users {
+    id
+    firstName
+    lastName
+    bio
+    country
+    phone
+    username
+    profileImage {
+      hash
+      url
+    }
+    coverImage {
+      hash
+      url
+    }
+    country
+  }
+}
