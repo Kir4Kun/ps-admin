@@ -19,6 +19,8 @@
     "@graphql-codegen/typescript": "^2.4.11",
     "@graphql-codegen/typescript-operations": "^2.4.0",
     "@graphql-codegen/typescript-vue-urql": "^2.2.12",
+    "@headlessui/vue": "^1.6.4",
+    "@heroicons/vue": "^1.0.6",
     "@urql/exchange-auth": "^0.1.7",
     "@urql/vue": "^0.6.2",
     "@vueuse/core": "^8.5.0",

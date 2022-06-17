@@ -27,3 +27,10 @@ query posts {
     updatedAt
   }
 }
+
+mutation removePost($id: String!) {
+  removePost(id: $id) {
+    id
+  }
+}
+

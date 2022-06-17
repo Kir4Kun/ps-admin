@@ -1,13 +1,44 @@
 <script setup lang="ts">
-import { usePostsQuery } from '../../generates'
+import { useTimeAgo } from '@vueuse/core'
+
+import { usePostsQuery, useRemovePostMutation } from '../../generates'
 import TableHeadItem from './TableHeadItem.vue'
 import TableRow from './TableRow.vue'
 import TableItem from './TableItem.vue'
+import Modal from './Modal.vue'
+
+const open = ref(false)
+const selectedPost = ref('')
 
 const { data } = await usePostsQuery()
+const { executeMutation: removePost } = useRemovePostMutation()
+
+const openModal = (id: string) => {
+  selectedPost.value = id
+  open.value = true
+}
+
+const closeModal = () => {
+  selectedPost.value = ''
+  open.value = false
+}
+
+const deletePost = async () => {
+  const postId = selectedPost.value
+  const { error } = await removePost({ id: postId })
+
+  if (error)
+    return
+
+  closeModal()
+}
 </script>
 
 <template>
+  <Modal
+    :open="open" title="Delete Post" message="Are you sure you want to delete this post?" confirm-text="Delete"
+    :on-close="closeModal" :on-confirm="deletePost"
+  />
   <Table name="Posts">
     <template #header>
       <TableHeadItem>
@@ -52,7 +83,12 @@ const { data } = await usePostsQuery()
           </p>
         </TableItem>
         <TableItem>
-          {{ post.createdAt ?? '-' }}
+          {{ useTimeAgo(post.createdAt).value }}
+        </TableItem>
+        <TableItem>
+          <button class="bg-red py-2 px-4 text-white border border-rounded" @click="openModal(post.id)">
+            Delete
+          </button>
         </TableItem>
       </TableRow>
     </template>
