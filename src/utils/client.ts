@@ -45,6 +45,12 @@ const addAuthToOperation = ({ authState, operation }: any) => {
   })
 }
 
+const willAuthError = ({ authState }: any) => {
+  if (!authState)
+    return true
+  return false
+}
+
 export const client = () => createClient({
   url: 'https://api.pokersocial.net/graphql',
   exchanges: [
@@ -53,6 +59,7 @@ export const client = () => createClient({
     authExchange({
       getAuth,
       addAuthToOperation,
+      willAuthError,
     }),
     fetchExchange,
   ],
