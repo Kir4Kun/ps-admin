@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { Dialog, DialogPanel, DialogTitle, TransitionChild, TransitionRoot } from '@headlessui/vue'
-import { ExclamationIcon } from '@heroicons/vue/outline/index'
+import { ExclamationIcon } from '@heroicons/vue/outline/index.js'
 
 defineProps<{
   open: boolean
